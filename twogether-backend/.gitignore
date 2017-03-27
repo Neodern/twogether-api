@@ -1,0 +1,12 @@
+.classpath
+.project
+.settings
+target
+aws/**/*
+*.log
+.springBeans
+
+#intellij
+.idea/
+*.iml
+
