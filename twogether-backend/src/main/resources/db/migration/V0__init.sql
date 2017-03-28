@@ -2,26 +2,27 @@
 -- person
 --
 CREATE TABLE person (
-  id        BIGSERIAL CONSTRAINT pk_person PRIMARY KEY,
-  email     TEXT    NOT NULL,
-  firstname TEXT    NOT NULL,
-  lastname  TEXT    NOT NULL,
-  app_role  TEXT    NOT NULL,
-  version   INT     NOT NULL,
-  login     TEXT    NOT NULL,
-  password  TEXT    NOT NULL,
-  enabled   BOOLEAN NOT NULL
+  id         BIGSERIAL CONSTRAINT pk_person PRIMARY KEY,
+  email      TEXT    NOT NULL,
+  firstname  TEXT,
+  lastname   TEXT,
+  role       TEXT    NOT NULL,
+  password   TEXT    NOT NULL,
+  enabled    BOOLEAN NOT NULL,
+  created_at DATE    NOT NULL,
+  updated_at DATE    NOT NULL,
+  version    INT     NOT NULL
 );
 
 --
--- person_role table
+-- couple
 --
-CREATE TABLE person_role (
-  id           BIGSERIAL CONSTRAINT pk_person_role PRIMARY KEY,
-  fk_person_id BIGINT NOT NULL,
-  role         TEXT   NOT NULL
+CREATE TABLE couple (
+  id            BIGSERIAL CONSTRAINT pk_couple PRIMARY KEY,
+  fk_person1_id BIGINT NOT NULL,
+  fk_person2_id BIGINT NOT NULL,
+  status        TEXT   NOT NULL,
+  birthdate     DATE,
+  created_at    DATE   NOT NULL
 );
-
-ALTER TABLE person_role
-  ADD CONSTRAINT person_role_fk FOREIGN KEY (fk_person_id) REFERENCES person (id);
 
